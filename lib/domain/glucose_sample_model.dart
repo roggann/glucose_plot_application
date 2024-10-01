@@ -13,7 +13,7 @@ class GlucoseSample extends Equatable {
   factory GlucoseSample.fromJson(Map<String, dynamic> json) => GlucoseSample(
         value: json["value"],
         unit: json["unit"],
-        timestamp: DateTime.fromMillisecondsSinceEpoch(json["timestamp"] * 1000),
+        timestamp: DateTime.parse(json["timestamp"]),
       );
 
   @override

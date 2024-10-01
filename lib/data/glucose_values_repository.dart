@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
 import 'package:glucose_plot_application/api/api_client.dart';
 import 'package:glucose_plot_application/api/api_result.dart';
 import 'package:glucose_plot_application/domain/glucose_sample_model.dart';
@@ -11,7 +14,7 @@ class GlucoseValuesRepository {
   Future<List<GlucoseSample>> fetchGlucoseValues() async {
     ApiResult result = await apiClient.get(url: "sample.json");
     if (result.type == ApiResultType.success) {
-      return List<GlucoseSample>.from(result.data["bloodGlucoseSamples"].map((x) => GlucoseSample.fromJson(x)));
+      return List<GlucoseSample>.from((result.data as Response).data["bloodGlucoseSamples"].map((x) => GlucoseSample.fromJson(x)));
     } else {
       throw result.errorMessage;
     }

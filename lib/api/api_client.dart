@@ -47,11 +47,7 @@ class ApiClient {
             cancelToken: cancelToken,
           )
           .timeout(const Duration(seconds: 15));
-      if (response.data['code'] == 200) {
-        return ApiResult(data:response.data, type: ApiResultType.success);
-      }else{
-        return ApiResult.failure(response.statusMessage ??"Error Happened, Please try again later.");
-      }
+        return ApiResult(data:response, type: ApiResultType.success);
     } catch (e) {
       return ApiResult.failure(e.toString());
     }
