@@ -16,7 +16,7 @@ class GlucoseSamplesAsyncNotifier extends FamilyAsyncNotifier<List<GlucoseSample
     state = await AsyncValue.guard(
           () => ref.watch(getGlucoseValuesProvider).fetchGlucoseValues(),
     );
-    return state.value;
+    return state.value?.listOfSamplesBetweenTwoDates(dateFilterOptions);
   }
 }
 

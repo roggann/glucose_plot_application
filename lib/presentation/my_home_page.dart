@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:glucose_plot_application/domain/glucose_sample_model.dart';
 import 'package:glucose_plot_application/presentation/state/glucose_samples_async_notifier.dart';
+import 'package:glucose_plot_application/presentation/state/providers.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -22,7 +23,7 @@ class MyHomePage extends ConsumerWidget {
           children: <Widget>[
             ref
                 .watch(glucoseSamplesAsyncNotifier(
-                    DateFilterOptions(endDatetime: DateTime(2021, 2, 10), startDateTime: DateTime(2021,2,10))))
+                    DateFilterOptions(endDatetime: ref.watch(endDateProvider), startDateTime:ref.watch(startDateProvider))))
                 .when(
               data: (samples) {
                 return SfCartesianChart(primaryXAxis: const DateTimeAxis(), series: <CartesianSeries>[
