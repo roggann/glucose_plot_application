@@ -39,6 +39,7 @@ dependencies:
   dio: ^5.7.0
   equatable: ^2.0.5
   syncfusion_flutter_charts: ^25.2.4
+  intl: ^0.18.0
 
 dev_dependencies:
   flutter_test:
