@@ -135,7 +135,7 @@ class MyHomePage extends ConsumerWidget {
               loading: () {
                 return Container(
                   alignment: Alignment.center,
-                  height: MediaQuery.of(context).size.height - 326,
+                  height: 200,
                   color: Colors.transparent,
                   child: const Padding(
                     padding: EdgeInsets.all(8),

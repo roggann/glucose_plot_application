@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:glucose_plot_application/presentation/state/glucose_samples_async_notifier.dart';
-import 'dart:math' as math;
 
 class GlucoseSample extends Equatable {
   final String value, unit;
@@ -28,7 +27,7 @@ class GlucoseSample extends Equatable {
 
 extension UpcomingSessionDate on List<GlucoseSample> {
   List<GlucoseSample>? listOfSamplesBetweenTwoDates(DateFilterOptions dates) => where(
-        (element) => (element.timestamp.isAfter(dates.startDateTime) && element.timestamp.isBefore(dates.endDatetime)),
+        (element) => ((element.timestamp.isAfter(dates.startDateTime) && element.timestamp.isBefore(dates.endDatetime))||(element.timestamp ==dates.endDatetime)||(element.timestamp ==dates.startDateTime)),
       ).toList();
 
   double minimumGlucoseValue() {
