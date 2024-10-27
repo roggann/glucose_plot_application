@@ -56,4 +56,12 @@ extension UpcomingSessionDate on List<GlucoseSample> {
       return isNotEmpty?(double.parse(this[middle - 1].value) + double.parse(this[middle].value)) / 2.0:0.0;
     }
   }
+
+  double percentageGlucoseValue( double thresholdValue){
+    List <double>  glucoseValues = map((e)=>double.parse(e.value)).toList();
+    List <double> glucoseValuesAboveThreshold = glucoseValues.where((element) => thresholdValue>element).toList();
+
+    return((glucoseValuesAboveThreshold.length/glucoseValues.length)*100);
+
+  }
 }

@@ -14,6 +14,8 @@ class MyHomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    TextEditingController textEditingController = TextEditingController();
+    textEditingController.text = "0";
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -116,6 +118,15 @@ class MyHomePage extends ConsumerWidget {
                         Text("Median:${samples?.medianGlucoseValue()}",style: const TextStyle(fontSize: 18,fontWeight: FontWeight.w500,)),
                       ],
                     ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    TextFormField(
+                      controller: textEditingController,
+                      keyboardType: TextInputType.number,
+                    ),
+                    Text("Percentage below threshold:${samples?.percentageGlucoseValue(double.parse(textEditingController.text)).toStringAsFixed(2)} %",style: const TextStyle(fontSize: 18,fontWeight: FontWeight.w500,)),
+
 
                   ],
                 );
